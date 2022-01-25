@@ -1,5 +1,7 @@
 workflows:
   test:
+    environment:
+      xcode: 13.2.1
     scripts:
       - name: Pod Install
         script: |
