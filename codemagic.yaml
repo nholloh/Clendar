@@ -1,1 +1,20 @@
+workflows:
+  test:
+    scripts:
+      - name: Pod Install
+        script: |
+          set -e
+          pod install
+    
+      - name: Run iOS tests
+        script: |
+          set -e # exit on first failed command
+
+          xcode-project run-tests \
+              --workspace Clendar.xcworkspace \
+              --scheme Clendar \
+              --device "iPhone 12"
+        test_report: build/ios/test/*.xml
+
+
 
